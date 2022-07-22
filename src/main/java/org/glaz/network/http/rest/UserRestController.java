@@ -2,7 +2,6 @@ package org.glaz.network.http.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.glaz.network.dto.*;
-import org.proteam24.zeroneapplication.dto.*;
 import org.glaz.network.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

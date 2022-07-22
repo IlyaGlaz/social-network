@@ -10,7 +10,7 @@ import org.glaz.network.dto.UserFilter;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static org.proteam24.zeroneapplication.database.entity.QUser.*;
+import static org.glaz.network.database.entity.QUser.*;
 
 @RequiredArgsConstructor
 public class FilterUserRepositoryImpl implements FilterUserRepository {

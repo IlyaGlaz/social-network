@@ -10,7 +10,6 @@ import org.glaz.network.dto.BaseUserReadDto;
 import org.glaz.network.dto.UserCreateEditDto;
 import org.glaz.network.dto.UserFilter;
 import org.glaz.network.dto.UserReadDto;
-import org.proteam24.zeroneapplication.dto.*;
 import org.glaz.network.mapper.DeletedUserMapper;
 import org.glaz.network.mapper.UserCreateEditMapper;
 import org.glaz.network.mapper.UserReadMapper;
@@ -27,8 +26,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.*;
-import static org.proteam24.zeroneapplication.database.entity.QUser.user;
+import static java.util.stream.Collectors.toList;
+import static org.glaz.network.database.entity.QUser.user;
 
 @Service
 @RequiredArgsConstructor

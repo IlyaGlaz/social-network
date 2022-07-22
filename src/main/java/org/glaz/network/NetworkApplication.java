@@ -6,10 +6,10 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-public class ZeroneApplication {
+public class NetworkApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZeroneApplication.class, args);
+        SpringApplication.run(NetworkApplication.class, args);
     }
 
 }
