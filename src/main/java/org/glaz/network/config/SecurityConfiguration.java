@@ -1,5 +1,6 @@
 package org.glaz.network.config;
 
+import org.glaz.network.database.entity.enums.UserType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,8 +15,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
-                .and()
+                .authorizeHttpRequests(urlConfig -> urlConfig
+                        .antMatchers("/login", "/users/registration", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                        .antMatchers("/admin/**").hasAuthority(UserType.ADMIN.getAuthority())
+                        .anyRequest().authenticated()
+                )
 //                .httpBasic(Customizer.withDefaults());
                 .logout(logout -> logout
                         .logoutUrl("/logout")
@@ -23,8 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         .deleteCookies("JSESSIONID"))
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/users")
-                        .permitAll());
+                        .defaultSuccessUrl("/users"));
     }
 
     @Bean
