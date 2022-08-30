@@ -17,6 +17,16 @@ spring:
         format_sql: true
         hbm2ddl:
           auto: validate
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 366684777573-78u6gvqhc0190l4l5fk4odi5sn1mn079.apps.googleusercontent.com
+            clientSecret: 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
+            redirectUri: http://localhost:8080/login/oauth2/code/google
+            scope: openid,email,profile
+
 logging:
   level:
     root: INFO
