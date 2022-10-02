@@ -27,20 +27,20 @@ public class UserRestController {
         return PageResponse.of(page);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<BaseUserReadDto> findById(@PathVariable("id") Long id) {
-        return userService.findById(id)
-                .map(content -> ResponseEntity.ok()
-                        .body(content))
-                .orElse(ResponseEntity.ok(new ErrorDto(HttpStatus.NOT_FOUND.toString(),
-                        LocalDateTime.now())));
-    }
-
 //    @GetMapping("/{id}")
-//    public BaseUserReadDto findById(@PathVariable("id") Long id) {
+//    public ResponseEntity<BaseUserReadDto> findById(@PathVariable("id") Long id) {
 //        return userService.findById(id)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//                .map(content -> ResponseEntity.ok()
+//                        .body(content))
+//                .orElse(ResponseEntity.ok(new ErrorDto(HttpStatus.NOT_FOUND.toString(),
+//                        LocalDateTime.now())));
 //    }
+
+    @GetMapping("/{id}")
+    public UserReadDto findById(@PathVariable("id") Long id) {
+        return userService.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)

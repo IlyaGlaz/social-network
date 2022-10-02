@@ -58,13 +58,18 @@ public class UserService implements UserDetailsService {
                 .collect(toList());
     }
 
-    public Optional<BaseUserReadDto> findById(Long id) {
-        Optional<User> maybeUser = userRepository.findById(id);
-
-        return maybeUser.filter(java.util.function.Predicate.not(User::getDeleted)).isPresent()
-                ? maybeUser.map(userReadMapper::map)
-                : maybeUser.map(deletedUserMapper::map);
+    public Optional<UserReadDto> findById(Long id) {
+        return userRepository.findById(id)
+                .map(userReadMapper::map);
     }
+
+//    public Optional<BaseUserReadDto> findById(Long id) {
+//        Optional<User> maybeUser = userRepository.findById(id);
+//
+//        return maybeUser.filter(java.util.function.Predicate.not(User::getDeleted)).isPresent()
+//                ? maybeUser.map(userReadMapper::map)
+//                : maybeUser.map(deletedUserMapper::map);
+//    }
 
     @Transactional
     public UserReadDto create(UserCreateEditDto userDto) {
